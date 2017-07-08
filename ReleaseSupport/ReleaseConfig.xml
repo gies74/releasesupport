@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ReleaseConfig lastcustomer="Dell">
+  <Customer name="Mettenmeier" home="\\srv-vinson\Work\Mettenmeier\Releases" notes="C:\Documents and Settings\GBouwman\My Documents\Projecten\Tensing Mobile GIS\Releases\Release Notes.doc">
+    <ReleaseComponent name="GatewayMagik" included="true" rootdir="\\vm04-mm-tmg-o\c$\Temp" filtercsv="*.*" target="Gateway\Magik" />
+    <ReleaseComponent name="SSI" included="true" rootdir="C:\Projects\GIS\Main\Source\MobileGis\Common\SSI\Installation\bin\x64\Release" filtercsv="*.*" target="Gateway\x64" />
+  </Customer>
+  <Customer name="Vitens" home="\\srv-vinson\Work\Vitens\Releases" notes="C:\Documents and Settings\GBouwman\My Documents\Projecten\Tensing Mobile GIS\Releases\Release Notes.doc">
+    <ReleaseComponent name="GatewayMagik" included="true" rootdir="\\vm04-mm-tmg-o\c$\Temp" filtercsv="*.magikc" target="GatewayMagik" />
+    <ReleaseComponent name="SSI" included="false" rootdir="C:\Projects\GIS\Main\Source\MobileGis\Common\SSI\Installation\bin\x64\Release" filtercsv="*.*" target="Gateway\Magik" />
+    <ReleaseComponent name="iuofwefjkj" rootdir="C:\" filtercsv="asdkj" target="iuofwefjkj" included="false" />
+  </Customer>
+  <Customer name="Dell" home="C:\Temp\DELL" notes="C:\Documents and Settings\GBouwman\My Documents\Projecten\Tensing Mobile GIS\Releases\Release Notes.doc">
+    <ReleaseComponent name="107133" rootdir="C:\DELL\drivers\R107133" filtercsv="*.ini|*.gif" target="107133" included="true" />
+    <ReleaseComponent name="114079" rootdir="C:\DELL\drivers\R114079" filtercsv="*.ini|*.txt" target="114079" included="true" />
+  </Customer>
+</ReleaseConfig>
