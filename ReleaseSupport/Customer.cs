@@ -8,7 +8,7 @@ namespace ReleaseSupport
     public class Customer
     {
         XmlNode _node;
-        const string DEFAULT_RELEASEFORMAT_VAL = "Release_{0:yyyy-mm-dd}";
+        public const string DEFAULT_RELEASEFORMAT_VAL = "Release_{0:yyyy-MM-dd_HH-mm}-00";
         List<ReleaseComponent> _releaseComponents = new List<ReleaseComponent>();
 
         public List<ReleaseComponent> ReleaseComponents

@@ -49,6 +49,7 @@ namespace ReleaseSupport
             }
             LoadConfig();
             BuildGUI();
+            tbxReleaseLabel.Text = "Release_" + DateTime.Now.ToString("yyyy-MM-dd");
         }
 
         private void CreateBaseConfig(System.IO.FileInfo cfgInfo)
@@ -74,7 +75,6 @@ namespace ReleaseSupport
                 cLvi.Tag = customer;
                 cLvi.Selected = (_lastCust == customer.Name);
             }
-            tbxReleaseLabel.Text = "Release_" + DateTime.Now.ToString("yyyy-MM-dd");
         }
 
         private void LoadConfig()
@@ -153,6 +153,7 @@ namespace ReleaseSupport
         private void cmdCustAdd_Click(object sender, EventArgs e)
         {
             _custForm.Clear();
+            _custForm.ReleaseFormat = Customer.DEFAULT_RELEASEFORMAT_VAL;
             if (_custForm.ShowDialog() == DialogResult.OK)
             {
                 _configDirty = true;
