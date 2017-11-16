@@ -118,6 +118,7 @@ namespace ReleaseSupport
                     rLvi.SubItems.Add(rcomp.Target);
                 }
                 tbxReleaseLabel.Text = customer.ReleaseFormat;
+                cbClean.Checked = customer.CleanFirst;
             }
             else
             {
@@ -486,6 +487,15 @@ namespace ReleaseSupport
             foreach (ListViewItem lvi in listView2.Items)
             {
                 lvi.Checked = chkState;
+            }
+        }
+
+        private void cbClean_CheckedChanged(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count == 1)
+            {
+                Customer customer = listView1.SelectedItems[0].Tag as Customer;
+                customer.CleanFirst = cbClean.Checked;
             }
         }
     }

@@ -68,6 +68,14 @@ namespace ReleaseSupport
             get { return GetAtt("releaseFormat"); }
             set { SetAtt("releaseFormat", value); }
         }
+        public bool CleanFirst
+        {
+            get {
+                var x = GetAtt("cleanFirst");
+                return Boolean.Parse(String.IsNullOrEmpty(x) ? "true" : x);
+            }
+            set { SetAtt("cleanFirst", value.ToString()); }
+        }
 
         private void SetAtt(string attName, string value)
         {
@@ -78,11 +86,14 @@ namespace ReleaseSupport
             }
             _node.Attributes[attName].Value = value;
         }
+
         private string GetAtt(string attName)
         {
             XmlAttribute att = _node.Attributes[attName];
-            if (att == null)
+            if (att == null && attName == "releaseFormat")
                 return DEFAULT_RELEASEFORMAT_VAL;
+            else if (att == null)
+                return "";
             return att.Value;
         }
 

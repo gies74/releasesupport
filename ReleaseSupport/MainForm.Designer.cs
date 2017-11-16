@@ -29,28 +29,28 @@ namespace ReleaseSupport
         private void InitializeComponent()
         {
             this.listView1 = new System.Windows.Forms.ListView();
-            this.hCustomer = new System.Windows.Forms.ColumnHeader();
-            this.hRootdir = new System.Windows.Forms.ColumnHeader();
+            this.hCustomer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.hRootdir = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.linkNotes = new System.Windows.Forms.LinkLabel();
             this.cmdCustAdd = new System.Windows.Forms.Button();
             this.cmdCustDelete = new System.Windows.Forms.Button();
             this.cmdCustEdit = new System.Windows.Forms.Button();
+            this.cbCheckall = new System.Windows.Forms.CheckBox();
             this.cmdCompAdd = new System.Windows.Forms.Button();
             this.cmdCompDelete = new System.Windows.Forms.Button();
             this.cmdCompEdit = new System.Windows.Forms.Button();
             this.listView2 = new System.Windows.Forms.ListView();
-            this.hComponent = new System.Windows.Forms.ColumnHeader();
-            this.hSourceRoot = new System.Windows.Forms.ColumnHeader();
-            this.hFilter = new System.Windows.Forms.ColumnHeader();
-            this.hTargetDir = new System.Windows.Forms.ColumnHeader();
+            this.hComponent = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.hSourceRoot = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.hFilter = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.hTargetDir = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.cbClean = new System.Windows.Forms.CheckBox();
             this.rtbLog = new System.Windows.Forms.RichTextBox();
             this.tbxReleaseLabel = new System.Windows.Forms.TextBox();
             this.cmdSaveConfig = new System.Windows.Forms.Button();
             this.cmdMakeRelease = new System.Windows.Forms.Button();
-            this.cbClean = new System.Windows.Forms.CheckBox();
-            this.cbCheckall = new System.Windows.Forms.CheckBox();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -61,9 +61,9 @@ namespace ReleaseSupport
             // 
             // listView1
             // 
-            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.hCustomer,
             this.hRootdir});
@@ -89,9 +89,9 @@ namespace ReleaseSupport
             // 
             // splitContainer1
             // 
-            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.splitContainer1.Location = new System.Drawing.Point(3, 3);
             this.splitContainer1.Name = "splitContainer1";
             // 
@@ -160,6 +160,18 @@ namespace ReleaseSupport
             this.cmdCustEdit.UseVisualStyleBackColor = true;
             this.cmdCustEdit.Click += new System.EventHandler(this.cmdCustEdit_Click);
             // 
+            // cbCheckall
+            // 
+            this.cbCheckall.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.cbCheckall.AutoSize = true;
+            this.cbCheckall.Location = new System.Drawing.Point(183, 171);
+            this.cbCheckall.Name = "cbCheckall";
+            this.cbCheckall.Size = new System.Drawing.Size(88, 17);
+            this.cbCheckall.TabIndex = 4;
+            this.cbCheckall.Text = "Super Check";
+            this.cbCheckall.UseVisualStyleBackColor = true;
+            this.cbCheckall.CheckedChanged += new System.EventHandler(this.cbCheckall_CheckedChanged);
+            // 
             // cmdCompAdd
             // 
             this.cmdCompAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -195,9 +207,9 @@ namespace ReleaseSupport
             // 
             // listView2
             // 
-            this.listView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.listView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listView2.CheckBoxes = true;
             this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.hComponent,
@@ -235,9 +247,9 @@ namespace ReleaseSupport
             // 
             // splitContainer2
             // 
-            this.splitContainer2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainer2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.splitContainer2.Location = new System.Drawing.Point(2, 4);
             this.splitContainer2.Name = "splitContainer2";
             this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -257,11 +269,24 @@ namespace ReleaseSupport
             this.splitContainer2.SplitterDistance = 201;
             this.splitContainer2.TabIndex = 2;
             // 
+            // cbClean
+            // 
+            this.cbClean.AutoSize = true;
+            this.cbClean.Checked = true;
+            this.cbClean.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbClean.Location = new System.Drawing.Point(6, 64);
+            this.cbClean.Name = "cbClean";
+            this.cbClean.Size = new System.Drawing.Size(145, 17);
+            this.cbClean.TabIndex = 4;
+            this.cbClean.Text = "Clean (delete old version)";
+            this.cbClean.UseVisualStyleBackColor = true;
+            this.cbClean.CheckedChanged += new System.EventHandler(this.cbClean_CheckedChanged);
+            // 
             // rtbLog
             // 
-            this.rtbLog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtbLog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.rtbLog.BackColor = System.Drawing.SystemColors.Window;
             this.rtbLog.DetectUrls = false;
             this.rtbLog.ForeColor = System.Drawing.Color.Red;
@@ -301,30 +326,6 @@ namespace ReleaseSupport
             this.cmdMakeRelease.UseVisualStyleBackColor = true;
             this.cmdMakeRelease.Click += new System.EventHandler(this.cmdMakeRelease_Click);
             // 
-            // cbClean
-            // 
-            this.cbClean.AutoSize = true;
-            this.cbClean.Checked = true;
-            this.cbClean.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbClean.Location = new System.Drawing.Point(6, 64);
-            this.cbClean.Name = "cbClean";
-            this.cbClean.Size = new System.Drawing.Size(145, 17);
-            this.cbClean.TabIndex = 4;
-            this.cbClean.Text = "Clean (delete old version)";
-            this.cbClean.UseVisualStyleBackColor = true;
-            // 
-            // cbCheckall
-            // 
-            this.cbCheckall.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.cbCheckall.AutoSize = true;
-            this.cbCheckall.Location = new System.Drawing.Point(183, 171);
-            this.cbCheckall.Name = "cbCheckall";
-            this.cbCheckall.Size = new System.Drawing.Size(88, 17);
-            this.cbCheckall.TabIndex = 4;
-            this.cbCheckall.Text = "Super Check";
-            this.cbCheckall.UseVisualStyleBackColor = true;
-            this.cbCheckall.CheckedChanged += new System.EventHandler(this.cbCheckall_CheckedChanged);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -333,8 +334,8 @@ namespace ReleaseSupport
             this.Controls.Add(this.splitContainer2);
             this.Name = "MainForm";
             this.Text = "Release Support";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OnFormClosing);
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
