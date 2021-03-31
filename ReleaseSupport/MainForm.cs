@@ -41,7 +41,7 @@ namespace ReleaseSupport
 #if DEBUG
             d = "_debug";
 #endif
-            _xdocFilename = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\ReleaseSupport\ReleaseConfig"+d+".xml";
+            _xdocFilename = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\ReleaseSupport\ReleaseConfig" + d + ".xml";
             System.IO.FileInfo config = new System.IO.FileInfo(_xdocFilename);
             if (!config.Exists)
             {
@@ -49,7 +49,6 @@ namespace ReleaseSupport
             }
             LoadConfig();
             BuildGUI();
-            tbxReleaseLabel.Text = "Release_" + DateTime.Now.ToString("yyyy-MM-dd");
         }
 
         private void CreateBaseConfig(System.IO.FileInfo cfgInfo)
@@ -75,6 +74,7 @@ namespace ReleaseSupport
                 cLvi.Tag = customer;
                 cLvi.Selected = (_lastCust == customer.Name);
             }
+            CustomerSelectionChanged();
         }
 
         private void LoadConfig()
@@ -100,14 +100,19 @@ namespace ReleaseSupport
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            CustomerSelectionChanged();
+        }
+        private void CustomerSelectionChanged()
+        {
             bool wasDirty = _configDirty;
             bool itemSelected = (listView1.SelectedItems.Count == 1);
+            linkNotes.Enabled = cmdCustDelete.Enabled = cmdCustEdit.Enabled = cmdCompAdd.Enabled = itemSelected;
             if (itemSelected)
             {
                 listView2.Items.Clear();
-                cmdCompEdit.Enabled = cmdCompDelete.Enabled = cmdMakeRelease.Enabled = cbCheckall.Enabled = false;
                 Customer customer = listView1.SelectedItems[0].Tag as Customer;
                 _lastCust = customer.Name;
+                linkNotes.Enabled = !String.IsNullOrEmpty(customer.Notes);
                 foreach (ReleaseComponent rcomp in customer.ReleaseComponents)
                 {
                     ListViewItem rLvi = listView2.Items.Add(rcomp.Name);
@@ -117,15 +122,24 @@ namespace ReleaseSupport
                     rLvi.SubItems.Add(rcomp.Filter);
                     rLvi.SubItems.Add(rcomp.Target);
                 }
-                tbxReleaseLabel.Text = customer.ReleaseFormat;
+                var releaseLabel = customer.ReleaseFormat;
+                try
+                {
+                    releaseLabel = String.Format(customer.ReleaseFormat, DateTime.Now);
+                }
+                finally
+                {
+                    tbxReleaseLabel.Text = releaseLabel;
+                }
                 cbClean.Checked = customer.CleanFirst;
             }
             else
             {
                 listView2.Items.Clear();
             }
-            cmdCustEdit.Enabled = cmdCustDelete.Enabled = cmdMakeRelease.Enabled = linkNotes.Enabled = cbCheckall.Enabled = itemSelected;
-            cmdCompAdd.Enabled = itemSelected;
+            ComponentSelectionChanged();
+            //cmdCustEdit.Enabled = cmdCustDelete.Enabled = cmdMakeRelease.Enabled = linkNotes.Enabled = cbCheckall.Enabled = itemSelected;
+            //cmdCompAdd.Enabled = itemSelected;
             _configDirty = wasDirty;
         }
 
@@ -134,7 +148,7 @@ namespace ReleaseSupport
             if (listView1.SelectedItems.Count == 1)
             {
                 Customer customer = listView1.SelectedItems[0].Tag as Customer;
-                if ((new System.IO.FileInfo(customer.Notes)).Exists)
+                if (!String.IsNullOrEmpty(customer.Notes) && (new System.IO.FileInfo(customer.Notes)).Exists)
                 {
                     ProcessStartInfo sInfo = new ProcessStartInfo(customer.Notes);
                     Process.Start(sInfo);
@@ -205,6 +219,12 @@ namespace ReleaseSupport
 
         private void listView2_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ComponentSelectionChanged();
+        }
+
+        private void ComponentSelectionChanged()
+        {
+
             bool itemSelected = (listView2.SelectedItems.Count == 1);
             cmdCompDelete.Enabled = itemSelected;
             cmdCompEdit.Enabled = itemSelected;
@@ -364,9 +384,9 @@ namespace ReleaseSupport
                 // insert the colour table at our chosen location                
                 strRTF = strRTF.Insert(iInsertLoc,
                     // CHANGE THIS STRING TO ALTER COLOUR TABLE
-                    "{\\"+colorString+"}");
+                    "{\\" + colorString + "}");
             }
-                        
+
         }
 
         public void AppendLogline()
@@ -428,7 +448,7 @@ namespace ReleaseSupport
             string strRtf = rtbLog.Rtf;
             if (!_colorTable.ContainsKey(fcolor))
             {
-                _colorTable.Add(fcolor, String.Format("\\cf{0} ", _colorTable.Count+1));
+                _colorTable.Add(fcolor, String.Format("\\cf{0} ", _colorTable.Count + 1));
                 AddColor(ref strRtf);
             }
             int inspos = strRtf.LastIndexOf(@"\par");
@@ -447,11 +467,11 @@ namespace ReleaseSupport
 
             ParameterizedThreadStart start = new ParameterizedThreadStart(ReleaseEngine.MakeRelease);
             Thread thread = new Thread(start);
-            thread.Start(new object[] { 
-                this, 
-                String.Format(tbxReleaseLabel.Text, DateTime.Now), 
+            thread.Start(new object[] {
+                this,
+                String.Format(tbxReleaseLabel.Text, DateTime.Now),
                 customer,
-                cbClean.Checked 
+                cbClean.Checked
             });
         }
 

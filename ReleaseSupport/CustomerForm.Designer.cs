@@ -94,7 +94,7 @@ namespace ReleaseSupport
             this.cmdOK.Location = new System.Drawing.Point(193, 136);
             this.cmdOK.Name = "cmdOK";
             this.cmdOK.Size = new System.Drawing.Size(74, 29);
-            this.cmdOK.TabIndex = 6;
+            this.cmdOK.TabIndex = 7;
             this.cmdOK.Text = "OK";
             this.cmdOK.UseVisualStyleBackColor = true;
             // 
@@ -104,7 +104,7 @@ namespace ReleaseSupport
             this.cmdCancel.Location = new System.Drawing.Point(113, 136);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(74, 29);
-            this.cmdCancel.TabIndex = 7;
+            this.cmdCancel.TabIndex = 8;
             this.cmdCancel.Text = "Cancel";
             this.cmdCancel.UseVisualStyleBackColor = true;
             // 
@@ -144,7 +144,7 @@ namespace ReleaseSupport
             this.tbxReleaseFormat.Location = new System.Drawing.Point(98, 92);
             this.tbxReleaseFormat.Name = "tbxReleaseFormat";
             this.tbxReleaseFormat.Size = new System.Drawing.Size(133, 20);
-            this.tbxReleaseFormat.TabIndex = 2;
+            this.tbxReleaseFormat.TabIndex = 6;
             this.tbxReleaseFormat.Text = "Release_{0:yyyy-mm-dd}";
             this.tbxReleaseFormat.TextChanged += new System.EventHandler(this.tbxHome_TextChanged);
             // 
