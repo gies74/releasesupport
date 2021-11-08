@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.Xml;
 using System.Diagnostics;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace ReleaseSupport
 {
@@ -464,15 +465,16 @@ namespace ReleaseSupport
             InitRichTextBox();
             // return;
             Customer customer = listView1.SelectedItems[0].Tag as Customer;
-
-            ParameterizedThreadStart start = new ParameterizedThreadStart(ReleaseEngine.MakeRelease);
-            Thread thread = new Thread(start);
-            thread.Start(new object[] {
-                this,
-                String.Format(tbxReleaseLabel.Text, DateTime.Now),
+            var task = new Task(() => ReleaseEngine.MakeRelease(new object[] {this, String.Format(tbxReleaseLabel.Text, DateTime.Now),
                 customer,
-                cbClean.Checked
-            });
+                cbClean.Checked }));
+            task.ContinueWith(ExceptionHandler, TaskContinuationOptions.OnlyOnFaulted);
+            task.Start();
+        }
+
+        private void ExceptionHandler(Task task)
+        {
+            MessageBox.Show(task.Exception.ToString());
         }
 
         private void OnLogKeyUp(object sender, KeyEventArgs e)

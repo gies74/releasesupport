@@ -66,6 +66,10 @@ namespace ReleaseSupport
                 DirectoryInfo srcDir = new DirectoryInfo(sourceDirName);
                 comp.Filter = (comp.Filter == String.Empty) ? "*.*" : comp.Filter;
                 string[] filters = comp.Filter.Split('|');
+                if (!srcDir.Exists)
+                {
+                    throw new Exception($"Source directory {sourceDirName} does not exist!");
+                }
                 foreach (string filter in filters)
                 {
                     FileInfo[] sourceFiles = srcDir.GetFiles(filter, (comp.Deep) ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly);
